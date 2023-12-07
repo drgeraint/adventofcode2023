@@ -10,6 +10,7 @@ def classify(hand, part=1):
     cards = [hand[i] for i in range(0,5)]
     cards.sort()
     groups = []
+    njokers = 0
     if 2 == part:
         njokers = cards.count('B')
         while('B') in cards: cards.remove('B')
@@ -19,9 +20,8 @@ def classify(hand, part=1):
         groups.append(x)
         i = i + x   
     groups.sort(reverse=True)
-    if 2 == part:
-        if [] == groups : groups = [0]
-        groups[0] = groups[0] + njokers
+    if [] == groups : groups = [0]
+    groups[0] = groups[0] + njokers
     score = ''
     for i in range(0, len(groups)):
         score = score + str(groups[i])
