@@ -9,22 +9,22 @@ cardmap = {'A':'E', 'K':'D', 'Q':'C', 'J':'B', 'T':'A'}
 def classify(hand, part=1):
     cards = [hand[i] for i in range(0,5)]
     cards.sort()
-    parts = []
+    groups = []
     if 2 == part:
         njokers = cards.count('B')
         while('B') in cards: cards.remove('B')
     i = 0
     while i < len(cards):
         x = cards.count(cards[i])
-        parts.append(x)
+        groups.append(x)
         i = i + x   
-    parts.sort(reverse=True)
+    groups.sort(reverse=True)
     if 2 == part:
-        if [] == parts : parts = [0]
-        parts[0] = parts[0] + njokers
+        if [] == groups : groups = [0]
+        groups[0] = groups[0] + njokers
     score = ''
-    for i in range(0, len(parts)):
-        score = score + str(parts[i])
+    for i in range(0, len(groups)):
+        score = score + str(groups[i])
     score = score.ljust(5, '0')
     return score
         
