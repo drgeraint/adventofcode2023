@@ -3,8 +3,6 @@
 filename = 'test6.txt'
 #filename = 'input.txt'
 
-import re
-
 with open(filename, 'r') as fin:
     lines = fin.read().splitlines()
 
