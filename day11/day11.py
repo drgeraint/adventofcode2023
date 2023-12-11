@@ -3,6 +3,13 @@
 #filename = 'test1.txt'
 filename = 'input.txt'
 
+PART = 2
+
+if 1 == PART:
+    EXPANSION = 1
+elif 2 == PART:
+    EXPANSION = 1000000-1
+
 import re
 
 with open(filename, 'r') as fin:
@@ -28,11 +35,11 @@ class galaxy:
         
     def expand_row(self, row):
         if self.row > row:
-            self.row = self.row + 1
+            self.row = self.row + EXPANSION
 
     def expand_col(self, col):
         if self.col > col:
-            self.col = self.col + 1
+            self.col = self.col + EXPANSION
 
 def read_data():
     p = re.compile('#')
@@ -67,7 +74,7 @@ def expand_universe():
             galaxies.expand_col(col)
 
             
-def part1():
+def calculate():
     answer1 = 0
     for i in range(0, len(galactic_list)):
         for j in range(i+1, len(galactic_list)):
@@ -77,9 +84,9 @@ def part1():
             row_diff = abs(galactic_list[i].row-galactic_list[j].row)
             distance = col_diff + row_diff
             answer1 = answer1 + distance
-    print('Answer 1:', answer1)
+    print('Answer:', answer1)
             
 read_data()
 expand_universe()
-part1()
+calculate()
 
