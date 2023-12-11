@@ -15,9 +15,6 @@ import re
 with open(filename, 'r') as fin:
     lines = fin.read().splitlines()
 
-nrow = len(lines)
-ncol = len(lines[0])
-
 galactic_rows = {}
 galactic_cols = {}
 for row in range(0,nrow): galactic_rows[row] = []
@@ -62,6 +59,7 @@ def expand_universe():
         if galactic_cols[col] == []:
             empty_cols.append(col)
 
+    # The reverse sort makes expansion easy
     empty_cols.sort(reverse=True)
     empty_rows.sort(reverse=True)
 
@@ -72,10 +70,9 @@ def expand_universe():
     for col in empty_cols:
         for galaxies in galactic_list:
             galaxies.expand_col(col)
-
             
 def calculate():
-    answer1 = 0
+    answer = 0
     for i in range(0, len(galactic_list)):
         for j in range(i+1, len(galactic_list)):
             gi = galactic_list[i]
@@ -83,10 +80,9 @@ def calculate():
             col_diff = abs(galactic_list[i].col-galactic_list[j].col)
             row_diff = abs(galactic_list[i].row-galactic_list[j].row)
             distance = col_diff + row_diff
-            answer1 = answer1 + distance
-    print('Answer:', answer1)
+            answer = answer + distance
+    print('Answer:', answer)
             
 read_data()
 expand_universe()
 calculate()
-
