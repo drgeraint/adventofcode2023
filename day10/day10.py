@@ -1,11 +1,9 @@
 #! /usr/bin/env python3
 
-#filename = 'test6.txt'
-filename = 'input.txt'
+filename = 'test6.txt'
+#filename = 'input.txt'
 
 import re
-import sys
-sys.setrecursionlimit(100000)
 
 with open(filename, 'r') as fin:
     lines = fin.read().splitlines()
